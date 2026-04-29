@@ -1,0 +1,42 @@
+name: Example app build
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'lib/**'
+      - 'example/**'
+      - 'pubspec.yaml'
+      - '.github/workflows/example-build.yml'
+
+jobs:
+  build-example:
+    name: Build example (${{ matrix.target }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: apk
+            command: build apk --debug
+          - target: web
+            command: build web
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Resolve package dependencies
+        run: flutter pub get
+
+      - name: Resolve example dependencies
+        working-directory: example
+        run: flutter pub get
+
+      - name: Build example
+        working-directory: example
+        run: flutter ${{ matrix.command }}

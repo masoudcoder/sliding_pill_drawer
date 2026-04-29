@@ -1,0 +1,5 @@
+package com.example.sliding_pill_drawer_example
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()

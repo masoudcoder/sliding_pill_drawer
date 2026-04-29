@@ -1,0 +1,39 @@
+# Publishes the package to pub.dev when a tag matching v*.*.* is pushed.
+#
+# Setup (one-time):
+#   1. Go to https://pub.dev/packages/sliding_pill_drawer/admin
+#   2. Under "Automated publishing", enable GitHub Actions for this repo.
+#   3. Set environment to `pub.dev` and tag pattern to `v{{version}}`.
+#
+# After that, tagging a commit with `v1.0.2` (matching pubspec.yaml) will
+# trigger this workflow. No tokens or secrets to manage — pub.dev verifies
+# the OIDC identity token issued by GitHub.
+
+name: Publish to pub.dev
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'
+
+jobs:
+  publish:
+    name: Publish
+    permissions:
+      id-token: write
+    runs-on: ubuntu-latest
+    environment: pub.dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Publish (dry run)
+        run: dart pub publish --dry-run
+
+      - name: Publish
+        run: dart pub publish --force

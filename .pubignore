@@ -1,0 +1,29 @@
+# Files excluded from the pub.dev archive but kept in source control.
+#
+# Keep doc/screenshots/ (referenced by pubspec screenshots: block) and
+# doc/architecture.md (linked from README) — they ship with the package.
+
+# Example platform scaffolding — pub.dev only needs the Dart code.
+example/build/
+example/.dart_tool/
+example/android/
+example/ios/
+example/web/
+example/windows/
+example/macos/
+example/linux/
+example/.flutter-plugins
+example/.flutter-plugins-dependencies
+example/pubspec.lock
+
+# Repo automation, not relevant to pub.dev consumers.
+.github/
+.idea/
+*.iml
+
+# Capture instructions are for contributors only.
+doc/CAPTURE.md
+
+# Build / coverage artifacts.
+coverage/
+build/

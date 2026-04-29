@@ -1,0 +1,40 @@
+name: sliding_pill_drawer
+description: >-
+  A customizable side drawer with a draggable pill button that slides 1:1 with
+  the panel. Supports sticky and in-list follower modes, plus RTL/LTR.
+version: 1.0.1
+homepage: https://github.com/masoudcoder/sliding_pill_drawer
+repository: https://github.com/masoudcoder/sliding_pill_drawer
+issue_tracker: https://github.com/masoudcoder/sliding_pill_drawer/issues
+documentation: https://pub.dev/documentation/sliding_pill_drawer/latest/
+
+topics:
+  - drawer
+  - navigation
+  - animation
+  - rtl
+  - ui
+
+screenshots:
+  - description: 'Sticky mode at rest — pill pinned to the leading edge while the list scrolls.'
+    path: doc/screenshots/01_sliding_pill_drawer_example.jpg
+  - description: 'Sticky mode mid-drag — panel and pill move 1:1 with the finger.'
+    path: doc/screenshots/02_sliding_pill_drawer_example.jpg
+  - description: 'Sticky mode fully open — drawer header and menu items visible.'
+    path: doc/screenshots/03_sliding_pill_drawer_example.jpg
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+  flutter: '>=3.27.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
